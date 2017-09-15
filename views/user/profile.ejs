@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+
+
+</head>
+
+<body>
+<%- include ../partials/navbar.ejs %>
+
+    <div class="col-md-12 mob-clearfix margin-80">
+        <input type="hidden" id="name-user" value="<%= user.username %>">
+        <input type="hidden" id="name-image" value="<%= user.userImage %>">
+
+        <div class="col-md-12">
+            <div class="chat_container">
+                <div class="row">
+                    <!-- LEFT -->
+
+                    <div class="col-sm-4 col-md-3">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="profile-sidebar">
+                                        <div class="img-container">
+                                            <img src="https://footballkik.s3.amazonaws.com/<%= user.userImage %>" class="img-responsive img-user" id="show_img">
+                                        </div>
+                                
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name">
+                                            <%= user.fullname %>
+                                        </div>
+                                        <div class="profile-usertitle-job">
+                                            @<%= user.username %>
+                                        </div>
+                                    </div>
+                              
+                                    <div class="profile-usermenu">
+                                        <ul class="nav">
+                                            <li>
+                                                <a href="/profile/<%= user.username %>" style="color:#4aa1f3 !important">
+                                                    <i class="fa fa-home" style="color:#4aa1f3 !important"></i>
+                                                    Overview
+                                                </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="/settings/profile" style="color:#4aa1f3 !important">
+                                                    <i class="fa fa-user" style="color:#4aa1f3 !important"></i>
+                                                    Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/settings/interests" style="color:#4aa1f3 !important">
+                                                    <i class="fa fa-check" style="color:#4aa1f3 !important"></i>
+                                                    Interests
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!--MIDDLE-->
+                    <div class="col-sm-5 col-md-6 mob-50">
+
+                        <div class="profile-signup">
+                            <span id="error" class="text-center"></span>
+
+                            <form class="form" role="form" method="POST" id="form" action="#">
+
+                                <h3 style="margin-top:0px; color:#4aa1f3 !important">Personal Information</h3>
+                                <hr />
+                                <div class="row">
+                                   <div class="col-md-12">
+                                        <input id="username" class="form-control input-lg" name="username" type="text" placeholder="Username" value="<%= user.username %>">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="fullname" class="form-control input-lg" name="fullname" type="text" placeholder="Fullname" value="<%= user.fullname %>">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="country" class="form-control input-lg" name="country" type="text" placeholder="Country" value="<%= user.country %>">
+                                    </div>
+
+                                </div>
+                                <label style="color:#4aa1f3 !important">Gender : </label>
+                                <label style="color:#4aa1f3 !important; margin-right:10px;"></label>
+                                <% if(typeof user.gender !== 'undefined') {%>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="gender" value="<%= user.gender %>" id="gender" checked />
+                                        <%= user.gender %>
+                                    </label><br>
+                                <% } %>
+                                
+                                
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" value="Male" id="gender" />
+                                    Male
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" value="Female" id="gender" />
+                                    Female
+                                </label>
+
+
+                                <div class="" style="margin-top:20px">
+                                <label style="color:#4aa1f3 !important">Mantra</label><br>
+                                    <textarea name="mantra" id="mantra" class="form-control input-lg" rows="5" placeholder="A one liner sentence"><%= user.mantra %></textarea>
+                                </div>
+
+                                <div>
+                                    <label style="color:#4aa1f3 !important">Add Profile Photo</label><br>
+                                    <input type="hidden" id="user-image" value="<%= user.userImage %>">
+                                    <button class="btn btn-lg add-btn" style="background-color:#4aa1f3 !important; color:white" type="button">Add Profile Image</button>
+                                    <input type="file" class="form-control" name="upload" id="add-input" style="display: none">
+                                    <span id="completed"></span>
+                                </div>
+
+                                <input type="submit" id="profile" value="SAVE PROFILE" class="btn btn-lg btn-default btn-block save-profile-btn" name="submit" style="background-color:#4aa1f3 !important; color:white !important">
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/messagelink.js"></script>
+<script src="/js/group/sendrequest.js"></script> 
+<script src="/js/user/profile.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/deparam.js"></script>
+
+</html>

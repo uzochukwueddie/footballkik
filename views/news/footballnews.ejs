@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/news.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/home">Footballkik</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" id="reload">
+        <li><a href="/members">Members</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.username %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings/profile"><span class="fa fa-user"> Profile</span></a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="col-md-12">
+   <input type="hidden" id="name-user" value="<%= user.username %>">
+   <input type="hidden" id="name-image" value="<%= user.userImage %>">
+   
+   <div class="col-md-12">
+       <h1 class="news-mainhead">
+           Latest News
+       </h1>
+   </div>
+   
+   <div class="col-md-12 col-sm-12 news-bottom" id="newsResults"></div>
+   
+   <div class="col-md-12">
+      <button id="loadMore" class="btn col-xs-12 n-hide-screen-large">Load More</button>
+      
+      <p id="top">
+          <a href="#top" id="linkTop">Back to top</a>
+      </p>
+       
+   </div>
+   
+</div>
+
+  
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/group/sendrequest.js"></script> 
+<script src="/js/home.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/news/footballnews.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/group.css">
+
+
+</head>
+
+<body>
+<%- include ../partials/navbar.ejs %>
+
+
+    <div class="col-md-12">
+        <input type="hidden" id="name-user" value="<%= user.username %>">
+        <input type="hidden" id="name-image" value="<%= user.userImage %>">
+
+        <div class="col-md-12">
+            <div class="chat_container">
+                <div class="row">
+                    
+                    <div class="col-sm-4 col-md-3 mob-clearfix">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+                                            <div class="cover">
+
+                                            </div>
+                                            <div class="user cover-img">
+                                                <img src="https://placehold.it/300x300" class="img-circle" alt="">
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+                                                    <h3 class="name"><%= _.upperFirst(user.username) %></h3>
+                                                    <p class="profession-online">
+                                                        <i class="fa fa-circle online" aria-hidden="true"></i>
+                                                        Online
+                                                    </p>
+                                                    <p class="text-center">
+                                                    	Mantra
+                                                    </p>
+                                                </div>
+                                                <div class="footer">
+                                                    <i class="fa fa-mail-forward"></i> 
+                                                    <a href="#">
+                                                      View My Profile
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-md-12">
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+
+                                            <div class="content main-scroll">
+                                                <div class="main" id="main_scroll">
+                                                    <p class="friends" style="margin-bottom:0px;">
+                                                        Online Friends <span id="numOfFriends"></span>
+                                                    </p>
+                                                    <hr style="margin-top:10px" />
+                                                    <% if(data.friendsList.length > 0) { %>
+                                                        <% _.forEach(data.friendsList, function(value) { %>
+                                                        <div class="friend" hidden>@<%= value.friendName %></div>
+                                                        <% }) %>
+                                                    <% } %>
+                                                    
+                                                    <div class="onlineFriends"></div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="col-sm-5 col-md-6 message_section">
+                        <div class="row">
+                            <div class="new_message_head">
+                                <div class="pull-left">
+                                <button id="receiver_name"></button>
+                                </div>
+                                <div class="pull-right">
+                                </div>
+                            </div>
+
+                            <div class="chat_area">
+                                <ul id="messages" class="list-unstyled">
+                                  <% if(chats.length > 0) {%>
+                                   <% _.forEach(chats, function(val) { %>
+                                   <% if(name === val.receiver.username.toLowerCase()) {%>
+                                    <li class="left">
+                                       <span class="chat-img1 pull-left">
+                                           <img src="http://placehold.it/300x300" class="img-circle" alt="">
+                                       </span>
+                                       <div class="chat-body1">
+                                           <span class="chat-name"><%= val.senderName %></span>
+                                           <br>
+                                           <%= val.message %>
+                                       </div>
+                                    </li>
+                                    <% } else if(name === val.sender.username.toLowerCase()) {%>
+                                        <li class="left">
+                                           <span class="chat-img1 pull-left">
+                                               <img src="http://placehold.it/300x300" class="img-circle" alt="">
+                                           </span>
+                                           <div class="chat-body1">
+                                               <span class="chat-name"><%= val.senderName %></span>
+                                               <br>
+                                               <%= val.message %>
+                                           </div>
+                                        </li>
+                                    <% } %>
+                                    <% }) %>
+                                    <% } %>
+                                </ul>
+                                
+                                <script id="message-template" type="text/template">
+                                    <li class="left">
+                                       <span class="chat-img1 pull-left">
+                                           <img src="http://placehold.it/300x300" class="img-circle" alt="">
+                                       </span>
+                                       <div class="chat-body1">
+                                           <span class="chat-name">{{ sender }}</span>
+                                           <br>
+                                           {{ text }}
+                                       </div>
+                                    </li>
+                                </script>
+                                
+                            </div>
+
+                            <div class="message_write">
+                              <form id="message_form" method="post">
+
+                                  <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                                  <div class="clearfix"></div>
+                                  <div class="chat_bottom">
+                                      <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                                          Send
+                                      </button>
+                                  </div>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/privatechat/pm.js"></script>
+<script src="/js/messagelink.js"></script>
+<script src="/js/group/sendrequest.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/deparam.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+</body>
+
+</html>
+

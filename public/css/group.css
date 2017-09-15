@@ -1,0 +1,442 @@
+body {
+    font-size: 16px;
+    line-height: 1.42857143;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #555;
+    background: #eeeeee;
+}
+
+
+h1 {
+    font-size: 38px;
+    color: #5C5C5B;
+}
+
+
+h2 {
+    font-size: 32px;
+    color: #5C5C5B;
+    margin-top: 0px;
+}
+
+h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.navbar{
+    background: #4aa1f3;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+	padding-left: 0px;
+    text-decoration: none;
+}
+
+.navbar-brand:hover{
+    color: #fff !important;
+    background-color: #4aa1f3;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff !important;
+    background-color: #4aa1f3;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #fff !important;
+    background-color: #4aa1f3;
+}
+
+.dropdown-toggle:active, .open .dropdown-toggle {
+    background:#4aa1f3 !important; 
+    border: none !important;
+    color:#000 !important;
+}
+
+.margin-80{
+    margin-bottom:80px
+}
+
+.new_message_head button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    outline: 0;
+    font-size: 17px;
+    color: #4aa1f3;
+}
+
+.new_message_head button:focus {
+	outline: 0 !important;
+}
+
+.new_message_head {
+    background: white none repeat scroll 0 0;
+    float: left;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 18px 10px;
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.32);
+}
+
+.message_section {
+    border: 1px solid #dddddd;
+}
+
+.chat_area {
+    background: white;
+    float: left;
+    height: 360px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    border-left: 1px solid rgba(128, 128, 128, 0.32);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.32);
+    border-right: 1px solid rgba(128, 128, 128, 0.32);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+    .chat_area li {
+        padding: 14px 14px 0;
+    }
+
+        .chat_area li .chat-img1 img {
+            height: 40px;
+            width: 40px;
+        }
+
+    .chat_area .chat-body1 {
+        margin-left: 50px;
+    }
+
+.chat_area li:last-child {
+    padding-bottom: 10px;
+}
+
+.chat-name{
+    font-size: 17px;
+    font-weight: 600;
+    color: #4aa1f3;
+}
+
+.message_write {
+    background: white none repeat scroll 0 0;
+    float: left;
+    padding: 15px;
+    width: 100%;
+}
+
+    .message_write textarea.form-control {
+        height: 70px;
+        padding: 10px;
+    }
+
+.chat_bottom {
+    float: left;
+    margin-top: 13px;
+    width: 100%;
+}
+
+member_list li:hover {
+    background: #428bca none repeat scroll 0 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.friends {
+    font-size: 18px;
+    color: gray;
+}
+
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    outline: 0 !important;
+}
+.card-container {
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    margin-bottom: 30px;
+}
+
+
+.card {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    color: #444444;
+}
+
+.card-container, .front, .back {
+    width: 100%;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+}
+
+.card .cover {
+    height: 105px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+}
+
+    .card .cover img {
+        width: 100%;
+    }
+
+.card .user {
+    border-radius: 50%;
+    display: block;
+    height: 200px;
+    margin: -55px auto 0;
+    overflow: hidden;
+    width: 200px;
+}
+
+.card .content {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    padding: 10px 20px 20px;
+}
+
+    .card .main {
+        min-height: 160px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+.card .back .content .main {
+    height: 215px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card .name {
+    font-family: 'Arima Madurai', cursive;
+    font-size: 22px;
+    line-height: 28px;
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+
+.card .profession-online {
+    color: #999999;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.online {
+    font-size: 10px;
+    color: rgba(129, 191, 57, 0.95);
+    position: relative;
+    top: -2px;
+}
+
+.card .footer {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    margin: 30px 0 0;
+    padding: 10px 0 0;
+    text-align: center;
+}
+
+
+
+
+.main-scroll {
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.online_friend {
+    font-size: 10px;
+    color: rgba(129, 191, 57, 0.95);
+    position: relative;
+    float: right;
+}
+
+.name, .friends, #numOfFriends, .club_name, .club_fans{
+    color: #4aa1f3 !important;
+}
+
+.bl {
+    color: #03a9f4;
+    font-weight: 500;
+}
+
+.gr-rightsidebar {
+    padding-top: 15px;
+    background: white;
+    float: left;
+    height: 506px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    border-left: 1px solid rgba(128, 128, 128, 0.32);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.32);
+    border-right: 1px solid rgba(128, 128, 128, 0.32);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-title{
+    color: #4aa1f3;
+}
+
+#nameLink, .btn_close{
+    background-color: #4aa1f3 !important;
+    color: white !important;
+}
+
+.modal-body{
+    text-align: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+}
+
+.modal-footer {
+    padding-top: 15px;
+}
+
+#val{
+    cursor: pointer;
+    text-decoration: none;
+    color: #4aa1f3;
+}
+
+.nav-label-icon {
+    top: -9px;
+    position: relative;
+    background: red;
+    padding: 2px;
+}
+
+.nav-glyphicon {
+    padding-right: 4px;
+    position: relative;
+    top: 2px;
+}
+
+.dropdown-tag-head {
+    color: white;
+    padding-top: 7px;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.dmenu {
+    padding-top: 0px !important;
+}
+
+.dropdown-tag {
+    background: #03A9F4;
+    color: white;
+    padding: 4px;
+    margin-bottom: 15px;
+}
+
+.navbar-login {
+    width: 305px;
+    padding-bottom: 30px;
+    padding-top: 0px;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.drop-name {
+    margin-bottom: 0px;
+}
+
+.dropdown-divider {
+    margin-top: 5px !important;
+    margin-bottom: 14px !important;
+}
+
+.drop-accept {
+    background: #4aa1f3 !important;
+    border: #3bb5ec;
+    color: white !important;
+    text-shadow: none;
+}
+
+#reload{
+    padding: 0px 15px 0px 15px;
+}
+
+.cover-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.cover-img img{
+    min-height: 100%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.dropdown-img{
+    width: 40px;
+    height: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

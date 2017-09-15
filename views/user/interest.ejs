@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+
+
+</head>
+
+<body>
+<%- include ../partials/navbar.ejs %>
+
+    <div class="col-md-12 mob-clearfix margin-80">
+        <input type="hidden" id="name-user" value="<%= user.username %>">
+        <input type="hidden" id="name-image" value="<%= user.userImage %>">
+
+        <div class="col-md-12">
+            <div class="chat_container">
+                <div class="row">
+                    <!-- LEFT -->
+
+                    <div class="col-sm-4 col-md-3">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="profile-sidebar">
+                                        <div class="img-container">
+                                            <img src="https://footballkik.s3.amazonaws.com/<%= user.userImage %>" class="img-responsive img-user" id="show_img">
+                                        </div>
+                                
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name">
+                                            <%= user.fullname %>
+                                        </div>
+                                        <div class="profile-usertitle-job">
+                                            @<%= user.username %>
+                                        </div>
+                                    </div>
+                              
+                                    <div class="profile-usermenu">
+                                        <ul class="nav">
+                                            <li>
+                                                <a href="/profile/<%= user.username %>" style="color:#4aa1f3 !important">
+                                                    <i class="fa fa-home" style="color:#4aa1f3 !important"></i>
+                                                    Overview
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/settings/profile" style="color:#4aa1f3 !important">
+                                                    <i class="fa fa-user" style="color:#4aa1f3 !important"></i>
+                                                    Profile
+                                                </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="/settings/interests" style="color:#4aa1f3 !important">
+                                                    <i class="fa fa-check" style="color:#4aa1f3 !important"></i>
+                                                    Interests
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!--MIDDLE-->
+                    <div class="col-sm-8 col-md-9 mob-50">
+                      <span id="error"></span>
+                       <form action="/settings/interests" method="post">
+                        <div>
+                            <div class="user-display">
+
+                                <h3 class="user-display-head" style="color:#4aa1f3 !important">Favourite Clubs</h3>
+                                <hr />
+                                <% _.forEach(user.favClub, function(val) {%>
+                                    <p style="margin-bottom:30px; color:#4aa1f3">
+                                        <span class="glyphicon glyphicon-check" style="color:gray"></span>
+                                        <%= val.clubName %>
+                                    </p>
+                                <% }) %>
+
+                                <div class="form-group ad-30" style="margin-top:18px;">
+                                    <div class="input-group">
+                                    <input id="favClub" class="form-control add-items" name="favClub" type="text" style="">
+
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default add-items-btn" id="favClubBtn" style="font-weight:bold; background-color:#4aa1f3; color: #fff">Add Club</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:20px">
+                            <div class="user-display">
+
+                                <h3 class="user-display-head" style="color:#4aa1f3 !important">Favourite Players</h3>
+                                <hr />
+                                <% _.forEach(user.favPlayer, function(val) {%>
+                                    <p style="margin-bottom:30px; color:#4aa1f3">
+                                        <span class="glyphicon glyphicon-check" style="color:gray"></span>
+                                        <%= val.playerName %>
+                                    </p>
+                                <% }) %>
+
+                                <div class="form-group ad-30" style="margin-top:18px;">
+                                    <div class="input-group">
+                                    <input id="favPlayer" class="form-control add-items" name="favPlayer" type="text" style="">
+
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default add-items-btn" id="favPlayerBtn" style="font-weight:bold; background-color:#4aa1f3; color: #fff">Add Player</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:20px">
+                            <div class="user-display">
+
+                                <h3 class="user-display-head" style="color:#4aa1f3 !important">Favourite National Teams</h3>
+                                <hr />
+                                <% _.forEach(user.favNationalTeam, function(val) {%>
+                                    <p style="margin-bottom:30px; color:#4aa1f3">
+                                        <span class="glyphicon glyphicon-check" style="color:gray"></span>
+                                        <%= val.teamName %>
+                                    </p>
+                                <% }) %>
+
+                                <div class="form-group ad-30" style="margin-top:18px;">
+                                    <div class="input-group">
+                                    <input id="nationalTeam" class="form-control add-items" name="nationalTeam" type="text" style="">
+
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default add-items-btn" id="nationalTeamBtn" style="font-weight:bold; background-color:#4aa1f3; color: #fff">Add Team</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/messagelink.js"></script>
+<script src="/js/group/sendrequest.js"></script> 
+<script src="/js/user/interest.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/deparam.js"></script>
+
+</html>

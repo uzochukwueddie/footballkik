@@ -1,0 +1,139 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/home">Footballkik</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" id="reload">
+<!--        <li><a href="/latest-football-news">Football News</a></li>-->
+       
+        <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon fa fa-bell nav-glyphicon"></span><b class="caret"></b>
+                     <% if(data.totalRequest > 0) {%>
+                         <span class="label label-primary nav-label-icon"><%= data.request.length %></span>
+                     <% } else { %>
+                         <span class="label label-primary nav-label-icon" style="display:none"></span>
+                     <% } %>
+                      
+            </a>
+
+            <ul class="dropdown-menu">
+                <li>
+                    <div class="navbar-login" id="requestBar">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="dropdown-tag">
+                                    <h3 class="text-center dropdown-tag-head" >
+                                        Friend Requests
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                           <% if(data.request.length > 0) {%>
+                           <% _.forEach(data.request, function(val) { %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p class="text-center">
+                                        <img src="https://footballkik.s3.amazonaws.com/<%= val.userId.userImage %>" class="img-circle img-responsive dropdown-img" />
+                                    </p>
+                                </div>
+                                <div class="col-md-9 pleft-0">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <p class="text-left">
+                                                    <strong id=""><%= val.username %></strong>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <input type="hidden" name="senderId" id="senderId" value="<%= val.userId._id %>">
+                                                        <input type="hidden" name="senderName" id="senderName" value="<%= val.username %>">
+                                                        <button type="submit" name="accept" id="accept_friend" class="btn btn-default drop-accept accept"><i class="fa fa-check" aria-hidden="true"></i> Accept</button>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <input type="hidden" name="user_Id" id="user_Id" value="<%= val.userId._id %>">
+                                                        <button type="submit" name="cancel" class="btn drop-cancel remove" id="cancel_friend">
+                                                        <i class="fa fa-times" aria-hidden="true"></i> Cancel
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <% }) %>
+                            <% } else { %>
+                                <p class="text-center">No Friend Request</p>
+                            <% } %>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </li>
+        
+        <li>
+            <%- include message.ejs %>
+        </li>
+        
+        
+        <li><a href="/members">Members</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.username %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings/profile"><span class="fa fa-user"> Profile</span></a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
