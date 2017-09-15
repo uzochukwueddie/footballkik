@@ -23,7 +23,6 @@ const container = require('./container');
 container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
     
     mongoose.Promise = global.Promise;
-//    mongoose.connect('mongodb://adminfootball:adminfootballkik@ds137464.mlab.com:37464/footballkik', {useMongoClient: true});
     mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
     
     const app = SetupExpress();
