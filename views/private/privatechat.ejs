@@ -38,7 +38,7 @@
 
                                             </div>
                                             <div class="user cover-img">
-                                                <img src="https://placehold.it/300x300" class="img-circle" alt="">
+                                                <img src="https://footballkik.s3.amazonaws.com/<%= user.userImage %>" class="img-circle" alt="">
                                             </div>
                                             <div class="content">
                                                 <div class="main">
@@ -48,12 +48,12 @@
                                                         Online
                                                     </p>
                                                     <p class="text-center">
-                                                    	Mantra
+                                                    	<%= user.mantra %>
                                                     </p>
                                                 </div>
                                                 <div class="footer">
                                                     <i class="fa fa-mail-forward"></i> 
-                                                    <a href="#">
+                                                    <a style="text-decoration:none; color:#4aa1f3" href="/profile/<%= user.username %>">
                                                       View My Profile
                                                     </a>
                                                 </div>

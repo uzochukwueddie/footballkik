@@ -24,6 +24,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
     
     mongoose.Promise = global.Promise;
     mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
+//    mongoose.connect('mongodb://localhost/footballkik', {useMongoClient: true});
     
     const app = SetupExpress();
     

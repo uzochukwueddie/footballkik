@@ -122,7 +122,6 @@ module.exports = function(async, Users, Message){
                         {
                             "isRead": true
                         }, (err, done) => {
-                            console.log(done)
                             callback(err, done);
                         })
                     }
