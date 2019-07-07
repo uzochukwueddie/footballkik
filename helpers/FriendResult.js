@@ -4,7 +4,7 @@ module.exports = function(async, Users, Message){
             async.parallel([
                 function(callback){
                    if(req.body.receiverName){
-                       Users.update({
+                       Users.updateOne({
                            'username': req.body.receiverName,
                            'request.userId': {$ne: req.user._id},
                            'friendsList.friendId': {$ne: req.user._id}
@@ -23,7 +23,7 @@ module.exports = function(async, Users, Message){
                 
                 function(callback){
                     if(req.body.receiverName){
-                        Users.update({
+                        Users.updateOne({
                             'username': req.user.username,
                             'sentRequest.username': {$ne: req.body.receiverName}
                         },
@@ -44,7 +44,7 @@ module.exports = function(async, Users, Message){
                 //This function is updated for the receiver of the friend request when it is accepted
                 function(callback){
                     if(req.body.senderId){
-                        Users.update({
+                        Users.updateOne({
                             '_id': req.user._id,
                             'friendsList.friendId': {$ne: req.body.senderId}
                         }, {
@@ -66,7 +66,7 @@ module.exports = function(async, Users, Message){
                 //This function is updated for the sender of the friend request when it is accepted by the receiver
                 function(callback){
                     if(req.body.senderId){
-                        Users.update({
+                        Users.updateOne({
                             '_id': req.body.senderId,
                             'friendsList.friendId': {$ne: req.user._id}
                         }, {
@@ -85,7 +85,7 @@ module.exports = function(async, Users, Message){
                 
                 function(callback){
                     if(req.body.user_Id){
-                        Users.update({
+                        Users.updateOne({
                             '_id': req.user._id,
                             'request.userId': {$eq: req.body.user_Id}
                         }, {
@@ -101,7 +101,7 @@ module.exports = function(async, Users, Message){
                 
                 function(callback){
                     if(req.body.user_Id){
-                        Users.update({
+                        Users.updateOne({
                             '_id': req.body.user_Id,
                             'sentRequest.username': {$eq: req.user.username}
                         }, {
@@ -116,7 +116,7 @@ module.exports = function(async, Users, Message){
                 
                 function(callback){
                     if(req.body.chatId){
-                        Message.update({
+                        Message.updateOne({
                             '_id': req.body.chatId
                         },
                         {

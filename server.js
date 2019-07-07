@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const http = require('http');
 const cookieParser = require('cookie-parser');
-const validator = require('express-validator');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
@@ -18,13 +17,12 @@ const helmet = require('helmet');
 
 const container = require('./container');
 
-
-
 container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
     
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('useCreateIndex', true);
     mongoose.Promise = global.Promise;
-    mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
-//    mongoose.connect('mongodb://localhost/footballkik', {useMongoClient: true});
+    mongoose.connect('mongodb://localhost/footballkik', {useNewUrlParser: true});
     
     const app = SetupExpress();
     
@@ -61,19 +59,13 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         });
     }
     
-    
-    
     function ConfigureExpress(app){
-        
         app.use(compression());
         app.use(helmet());
-        
         
         require('./passport/passport-local');
         require('./passport/passport-facebook');
         require('./passport/passport-google');
-        
-        
         
         app.use(express.static('public'));
         app.use(cookieParser());
@@ -81,10 +73,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({extended: true}));
         
-        app.use(validator());
-        
         app.use(session({
-            secret: process.env.SECRET_KEY,
+            secret: '',
             resave: false,
             saveUninitialized: false,
             store: new MongoStore({mongooseConnection: mongoose.connection})

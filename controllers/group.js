@@ -22,7 +22,7 @@ module.exports = function(Users, async, Message, FriendResult, Group){
                 
                 function(callback){
                     const nameRegex = new RegExp("^" + req.user.username.toLowerCase(), "i")
-                    Message.aggregate(
+                    Message.aggregate([
                         {$match:{$or:[{"senderName":nameRegex}, {"receiverName":nameRegex}]}},
                         {$sort:{"createdAt":-1}},
                         {
@@ -40,7 +40,7 @@ module.exports = function(Users, async, Message, FriendResult, Group){
                             }
                             }, "body": {$first:"$$ROOT"}
                             }
-                        }, function(err, newResult){
+                        }], function(err, newResult){
                             const arr = [
                                 {path: 'body.sender', model: 'User'},
                                 {path: 'body.receiver', model: 'User'}

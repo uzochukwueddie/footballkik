@@ -17,7 +17,7 @@ module.exports = function(async, Users, Message, FriendResult){
                 
                 function(callback){
                     const nameRegex = new RegExp("^" + req.user.username.toLowerCase(), "i")
-                    Message.aggregate(
+                    Message.aggregate([
                         {$match:{$or:[{"senderName":nameRegex}, {"receiverName":nameRegex}]}},
                         {$sort:{"createdAt":-1}},
                         {
@@ -35,7 +35,7 @@ module.exports = function(async, Users, Message, FriendResult){
                             }
                             }, "body": {$first:"$$ROOT"}
                             }
-                        }, function(err, newResult){
+                        }], function(err, newResult){
                             const arr = [
                                 {path: 'body.sender', model: 'User'},
                                 {path: 'body.receiver', model: 'User'}
@@ -61,7 +61,7 @@ module.exports = function(async, Users, Message, FriendResult){
             async.parallel([
                function(callback){
                    if(req.body.favClub){
-                       Users.update({
+                       Users.updateOne({
                            '_id':req.user._id,
                            'favClub.clubName': {$ne: req.body.favClub}
                        },
@@ -81,7 +81,7 @@ module.exports = function(async, Users, Message, FriendResult){
             async.parallel([
                function(callback){
                    if(req.body.favPlayer){
-                       Users.update({
+                       Users.updateOne({
                            '_id':req.user._id,
                            'favPlayer.playerName': {$ne: req.body.favPlayer}
                        },
@@ -101,7 +101,7 @@ module.exports = function(async, Users, Message, FriendResult){
             async.parallel([
                function(callback){
                    if(req.body.nationalTeam){
-                       Users.update({
+                       Users.updateOne({
                            '_id':req.user._id,
                            'favNationalTeam.teamName': {$ne: req.body.nationalTeam}
                        },

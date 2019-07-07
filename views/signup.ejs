@@ -84,13 +84,12 @@
             </h1>
             
             <% if(hasErrors) {%>
-                <div class="alert alert-danger text-center">
-                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                   <% _.forEach(messages, function(error){ %>
-                       <%= error %><br>
-                   <% }) %>
-                    
-                </div>
+                <% _.forEach(messages, function(error){ %>
+                    <div class="alert alert-danger text-center">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <%= error %><br>
+                    </div>
+                <% }) %>
             <% } %>
 
             <div class="inset">

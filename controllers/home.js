@@ -17,11 +17,11 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
                 },
                 
                 function(callback){
-                    Club.aggregate({
+                    Club.aggregate([{
                         $group: {
                             _id: "$country"
                         }
-                    }, (err, newResult) => {
+                    }], (err, newResult) => {
                        callback(err, newResult) ;
                     });
                 },
@@ -36,7 +36,7 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
                 
                 function(callback){
                     const nameRegex = new RegExp("^" + req.user.username.toLowerCase(), "i")
-                    Message.aggregate(
+                    Message.aggregate([
                         {$match:{$or:[{"senderName":nameRegex}, {"receiverName":nameRegex}]}},
                         {$sort:{"createdAt":-1}},
                         {
@@ -54,7 +54,7 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
                             }
                             }, "body": {$first:"$$ROOT"}
                             }
-                        }, function(err, newResult){
+                        }], function(err, newResult){
                             const arr = [
                                 {path: 'body.sender', model: 'User'},
                                 {path: 'body.receiver', model: 'User'}
@@ -88,7 +88,7 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
         postHomePage: function(req, res){
             async.parallel([
                 function(callback){
-                    Club.update({
+                    Club.updateOne({
                         '_id':req.body.id,
                         'fans.username': {$ne: req.user.username}
                     }, {

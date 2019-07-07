@@ -12,7 +12,8 @@ const simpleDependecies = [
     ['Users', './models/user'],
     ['Message', './models/message'],
     ['Group', './models/groupmessage'],
-    ['aws', './helpers/AWSUpload']
+    ['aws', './helpers/AWSUpload'],
+    ['validator', 'express-validator']
 ];
 
 simpleDependecies.forEach(function(val){
